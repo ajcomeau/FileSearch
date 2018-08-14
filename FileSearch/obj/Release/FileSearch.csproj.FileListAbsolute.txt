@@ -1,0 +1,8 @@
+C:\Users\Andrew\Desktop\FileSearch\FileSearch\bin\Release\FileSearch.exe.config
+C:\Users\Andrew\Desktop\FileSearch\FileSearch\bin\Release\FileSearch.exe
+C:\Users\Andrew\Desktop\FileSearch\FileSearch\bin\Release\FileSearch.pdb
+C:\Users\Andrew\Desktop\FileSearch\FileSearch\obj\Release\FileSearch.Form1.resources
+C:\Users\Andrew\Desktop\FileSearch\FileSearch\obj\Release\FileSearch.Properties.Resources.resources
+C:\Users\Andrew\Desktop\FileSearch\FileSearch\obj\Release\FileSearch.csproj.GenerateResource.Cache
+C:\Users\Andrew\Desktop\FileSearch\FileSearch\obj\Release\FileSearch.exe
+C:\Users\Andrew\Desktop\FileSearch\FileSearch\obj\Release\FileSearch.pdb
