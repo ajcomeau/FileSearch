@@ -6,3 +6,5 @@ C:\Users\Andrew\Desktop\FileSearch\FileSearch\obj\Release\FileSearch.Properties.
 C:\Users\Andrew\Desktop\FileSearch\FileSearch\obj\Release\FileSearch.csproj.GenerateResource.Cache
 C:\Users\Andrew\Desktop\FileSearch\FileSearch\obj\Release\FileSearch.exe
 C:\Users\Andrew\Desktop\FileSearch\FileSearch\obj\Release\FileSearch.pdb
+C:\Users\Andrew\Desktop\FileSearch\FileSearch\obj\Release\FileSearch.About.resources
+C:\Users\Andrew\Desktop\FileSearch\FileSearch\obj\Release\FileSearch.csprojResolveAssemblyReference.cache

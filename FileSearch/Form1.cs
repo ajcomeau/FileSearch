@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Diagnostics;
+using System.Threading;
 
 namespace FileSearch
 {
@@ -17,7 +18,6 @@ namespace FileSearch
 
     public partial class Form1 : Form
     {
-
         public Form1()
         {
             InitializeComponent();
@@ -62,7 +62,7 @@ namespace FileSearch
                 }
 
                 // Update the notification with the number of files found.
-                lblCurrentFolder.Text = "Finished - " + dgFiles.Rows.Count.ToString() + " files found.";
+                progStatusLabel1.Text = "Finished - " + dgFiles.Rows.Count.ToString() + " files found.";
             }
             catch (Exception ex)
             {
@@ -72,36 +72,45 @@ namespace FileSearch
 
         private void SearchFiles(string StartingFolder, string Pattern)
         {
+
             // Recursive search of all subdirectories.
             // Get the directories and files.
-            string[] directoryList = Directory.GetDirectories(StartingFolder);
-            string[] fileList = Directory.GetFiles(StartingFolder, Pattern);
+            FileInfo fInfo;
 
             // Show the current folder being processed.
             // This slows things down but at least provides some sense of progress.
-            lblCurrentFolder.Update();
-            lblCurrentFolder.Text = StartingFolder;
-            
+
+            progStatusLabel1.Text = "Searching: " + StartingFolder;
+            Application.DoEvents();
+
             try
             {
                 // Add each file to the grid.
-                foreach (string fileName in fileList)
+                foreach (string fileName in Directory.GetFiles(StartingFolder, Pattern))
                 {
-                    FileInfo fInfo = new FileInfo(fileName);
-                    dgFiles.Rows.Add(fInfo.Name, fInfo.Directory, fInfo.Length, fInfo.LastWriteTime);
+                    if (fileName.Length < 260)
+                    {
+                        fInfo = new FileInfo(fileName);
+                        dgFiles.Rows.Add(fInfo.Name, fInfo.Directory, fInfo.Length, fInfo.LastWriteTime);
+                    }
+                    else
+                    {
+                        dgFiles.Rows.Add(fileName.Substring(fileName.LastIndexOf("\\") + 1), StartingFolder, null, null);
+                    }
                     dgFiles.Update();     
                 }
 
                 // Go to next directory.
-                foreach(string dirName in directoryList)
+                foreach (string dirName in Directory.GetDirectories(StartingFolder))
                 {
                     SearchFiles(dirName, Pattern);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                txtErrors.Text = ex.Message + Environment.NewLine + txtErrors.Text;               
             }
+
 
         }
 
@@ -116,16 +125,12 @@ namespace FileSearch
                 if (rowCurrent.Cells["PathName"].Value != null)
                 {
                     Process.Start(rowCurrent.Cells["PathName"].Value.ToString());
-                }
-                
+                }              
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-
-
-
         }
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -133,5 +138,24 @@ namespace FileSearch
             // Exit the application.
             Application.Exit();
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            About credits = new About();
+            credits.ShowDialog();
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            DialogResult drQuit = MessageBox.Show("Are you sure you want to quit?", "Quit File Search?", MessageBoxButtons.YesNo);
+
+            if(drQuit == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+
+
     }
 }

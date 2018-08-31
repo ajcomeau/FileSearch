@@ -36,13 +36,19 @@
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblCurrentFolder = new System.Windows.Forms.Label();
             this.dgFiles = new System.Windows.Forms.DataGridView();
             this.mainMenu = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnExit = new System.Windows.Forms.Button();
+            this.txtErrors = new System.Windows.Forms.TextBox();
+            this.progStatus = new System.Windows.Forms.StatusStrip();
+            this.progStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.dgFiles)).BeginInit();
             this.mainMenu.SuspendLayout();
+            this.progStatus.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtFolder
@@ -107,15 +113,6 @@
             this.label2.TabIndex = 7;
             this.label2.Text = "Results:  (Double-click on row to open folder in Windows Explorer.)";
             // 
-            // lblCurrentFolder
-            // 
-            this.lblCurrentFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lblCurrentFolder.AutoSize = true;
-            this.lblCurrentFolder.Location = new System.Drawing.Point(9, 325);
-            this.lblCurrentFolder.Name = "lblCurrentFolder";
-            this.lblCurrentFolder.Size = new System.Drawing.Size(0, 13);
-            this.lblCurrentFolder.TabIndex = 8;
-            // 
             // dgFiles
             // 
             this.dgFiles.AllowUserToAddRows = false;
@@ -127,17 +124,18 @@
             this.dgFiles.Location = new System.Drawing.Point(12, 143);
             this.dgFiles.Name = "dgFiles";
             this.dgFiles.ReadOnly = true;
-            this.dgFiles.Size = new System.Drawing.Size(440, 178);
+            this.dgFiles.Size = new System.Drawing.Size(515, 150);
             this.dgFiles.TabIndex = 9;
             this.dgFiles.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgFiles_CellDoubleClick);
             // 
             // mainMenu
             // 
             this.mainMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
+            this.fileToolStripMenuItem,
+            this.helpToolStripMenuItem});
             this.mainMenu.Location = new System.Drawing.Point(0, 0);
             this.mainMenu.Name = "mainMenu";
-            this.mainMenu.Size = new System.Drawing.Size(480, 24);
+            this.mainMenu.Size = new System.Drawing.Size(539, 24);
             this.mainMenu.TabIndex = 10;
             this.mainMenu.Text = "menuStrip1";
             // 
@@ -152,17 +150,75 @@
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "&Help";
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
+            this.aboutToolStripMenuItem.Text = "A&bout";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.Location = new System.Drawing.Point(469, 353);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(58, 23);
+            this.btnExit.TabIndex = 11;
+            this.btnExit.Text = "E&xit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // txtErrors
+            // 
+            this.txtErrors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtErrors.BackColor = System.Drawing.SystemColors.Control;
+            this.txtErrors.Location = new System.Drawing.Point(13, 299);
+            this.txtErrors.Multiline = true;
+            this.txtErrors.Name = "txtErrors";
+            this.txtErrors.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtErrors.Size = new System.Drawing.Size(514, 48);
+            this.txtErrors.TabIndex = 12;
+            // 
+            // progStatus
+            // 
+            this.progStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.progStatusLabel1});
+            this.progStatus.Location = new System.Drawing.Point(0, 383);
+            this.progStatus.Name = "progStatus";
+            this.progStatus.Size = new System.Drawing.Size(539, 22);
+            this.progStatus.TabIndex = 13;
+            this.progStatus.Text = "statusStrip1";
+            // 
+            // progStatusLabel1
+            // 
+            this.progStatusLabel1.Name = "progStatusLabel1";
+            this.progStatusLabel1.Size = new System.Drawing.Size(524, 17);
+            this.progStatusLabel1.Spring = true;
+            this.progStatusLabel1.Text = "Ready ...";
+            this.progStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(480, 362);
+            this.ClientSize = new System.Drawing.Size(539, 405);
+            this.Controls.Add(this.progStatus);
+            this.Controls.Add(this.txtErrors);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.dgFiles);
-            this.Controls.Add(this.lblCurrentFolder);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearch);
@@ -177,6 +233,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgFiles)).EndInit();
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
+            this.progStatus.ResumeLayout(false);
+            this.progStatus.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,11 +250,16 @@
         private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblCurrentFolder;
         private System.Windows.Forms.DataGridView dgFiles;
         private System.Windows.Forms.MenuStrip mainMenu;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.TextBox txtErrors;
+        private System.Windows.Forms.StatusStrip progStatus;
+        private System.Windows.Forms.ToolStripStatusLabel progStatusLabel1;
     }
 }
 
